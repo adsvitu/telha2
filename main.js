@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resetDrawer();
     overlay.classList.add('active');
     drawer.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('drawer-open');
     // Foco no primeiro campo
     setTimeout(() => {
       const nameInput = document.getElementById('drawerName');
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!overlay || !drawer) return;
     overlay.classList.remove('active');
     drawer.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('drawer-open');
   }
 
   // Reseta campos e estados
