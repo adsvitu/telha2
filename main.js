@@ -62,11 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // ── Bottom Drawer — Captador WhatsApp ─────────────────────
+  // ── Formulário Inline — Captador WhatsApp ─────────────────
 
   const WEBHOOK_URL = 'https://evolution-n8n.kpyewn.easypanel.host/webhook/telha40';
-  const WA_NUMBER  = '5584987711011';
-  const WA_MSG     = encodeURIComponent('Olá! Quero um orçamento de Telha Sanduíche');
+  const WA_NUMBER   = '5584987711011';
 
   // Captura UTMs da URL
   function getUTMs() {
@@ -82,136 +81,36 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Máscara telefone brasileiro: (XX) XXXXX-XXXX ou (XX) XXXX-XXXX
+  // Máscara telefone brasileiro
   function maskPhone(value) {
     let v = value.replace(/\D/g, '').slice(0, 11);
     if (v.length <= 2)  return v.replace(/^(\d{0,2})/, '($1');
     if (v.length <= 6)  return v.replace(/^(\d{2})(\d{0,4})/, '($1) $2');
     if (v.length <= 10) return v.replace(/^(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-    // Celular com 9 dígitos
     return v.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
   }
 
-  // Abre o drawer
-  function openDrawer() {
-    const overlay = document.getElementById('drawerOverlay');
-    const drawer  = document.getElementById('leadDrawer');
-    if (!overlay || !drawer) return;
-    // Reseta estado anterior
-    resetDrawer();
-    // Salva posicao do scroll para restaurar ao fechar (iOS/Android fix)
-    const scrollY = window.scrollY || window.pageYOffset;
-    document.body.dataset.scrollY = scrollY;
-    overlay.classList.add('active');
-    drawer.classList.add('active');
-    document.body.classList.add('drawer-open');
-    // Foco no primeiro campo
-    setTimeout(() => {
-      const nameInput = document.getElementById('drawerName');
-      if (nameInput) nameInput.focus();
-    }, 420);
-  }
-
-  // Fecha o drawer
-  function closeDrawer() {
-    const overlay = document.getElementById('drawerOverlay');
-    const drawer  = document.getElementById('leadDrawer');
-    if (!overlay || !drawer) return;
-    overlay.classList.remove('active');
-    drawer.classList.remove('active');
-    document.body.classList.remove('drawer-open');
-    // Restaura posicao do scroll
-    const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-    window.scrollTo(0, scrollY);
-  }
-
-  // Reseta campos e estados
-  function resetDrawer() {
-    const nameInput  = document.getElementById('drawerName');
-    const phoneInput = document.getElementById('drawerPhone');
-    const nameErr    = document.getElementById('drawerNameError');
-    const phoneErr   = document.getElementById('drawerPhoneError');
-    const form       = document.getElementById('drawerForm');
-    const success    = document.getElementById('drawerSuccess');
-    const submitBtn  = document.getElementById('drawerSubmit');
-
-    if (nameInput)  { nameInput.value  = ''; nameInput.classList.remove('error'); }
-    if (phoneInput) { phoneInput.value = ''; phoneInput.classList.remove('error'); }
-    if (nameErr)    nameErr.classList.remove('visible');
-    if (phoneErr)   phoneErr.classList.remove('visible');
-    if (form)       form.style.display = '';
-    if (success)    success.classList.remove('visible');
-    if (submitBtn)  { submitBtn.classList.remove('loading'); submitBtn.disabled = false; }
-  }
-
-  // Vincula abertura a todos os botões WhatsApp capture
-  function bindWhatsAppButtons() {
-    document.querySelectorAll('.btn-whatsapp-capture').forEach(btn => {
-      // Evita duplicar event listeners
-      btn.removeEventListener('click', handleWAClick);
-      btn.addEventListener('click', handleWAClick);
-    });
-  }
-
-  function handleWAClick(e) {
-    e.preventDefault();
-    openDrawer();
-  }
-
-  // Também vincula o botão flutuante
-  const floatBtn = document.querySelector('.whatsapp-float');
-  if (floatBtn) {
-    floatBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openDrawer();
-    });
-  }
-
-  // Overlay fecha o drawer ao clicar fora
-  const overlayEl = document.getElementById('drawerOverlay');
-  if (overlayEl) {
-    overlayEl.addEventListener('click', closeDrawer);
-  }
-
-  // Botão fechar
-  const closeBtn = document.getElementById('drawerClose');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeDrawer);
-  }
-
-  // Fechar com ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDrawer();
-  });
-
   // Máscara no campo telefone
-  const phoneField = document.getElementById('drawerPhone');
+  const phoneField = document.getElementById('formPhone');
   if (phoneField) {
     phoneField.addEventListener('input', (e) => {
-      const pos = e.target.selectionStart;
       const raw = e.target.value.replace(/\D/g, '');
       e.target.value = maskPhone(raw);
-      // Reposiciona cursor
-      try {
-        const newLen = e.target.value.length;
-        const diff = newLen - (pos || 0);
-        e.target.setSelectionRange(newLen, newLen);
-      } catch(_) {}
     });
   }
 
   // Submit do formulário
-  const drawerForm = document.getElementById('drawerForm');
-  if (drawerForm) {
-    drawerForm.addEventListener('submit', async (e) => {
+  const leadForm = document.getElementById('leadForm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nameInput  = document.getElementById('drawerName');
-      const phoneInput = document.getElementById('drawerPhone');
-      const nameErr    = document.getElementById('drawerNameError');
-      const phoneErr   = document.getElementById('drawerPhoneError');
-      const submitBtn  = document.getElementById('drawerSubmit');
-      const success    = document.getElementById('drawerSuccess');
+      const nameInput = document.getElementById('formName');
+      const phoneInput = document.getElementById('formPhone');
+      const nameErr   = document.getElementById('formNameError');
+      const phoneErr  = document.getElementById('formPhoneError');
+      const submitBtn = document.getElementById('formSubmit');
+      const success   = document.getElementById('formSuccess');
 
       // Validação
       let valid = true;
@@ -243,17 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       const utms = getUTMs();
-      const payload = {
-        nome,
-        telefone: phoneInput.value,
-        telefone_raw: telefone,
-        pagina: window.location.href,
-        ...utms,
-        timestamp: new Date().toISOString(),
-      };
 
       try {
-        // mode: 'no-cors' evita CORS preflight — o n8n recebe mesmo sem resposta legível
         await fetch(WEBHOOK_URL, {
           method: 'POST',
           mode: 'no-cors',
@@ -267,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
             timestamp: new Date().toISOString(),
           }).toString(),
         });
-        console.log('Webhook enviado com sucesso');
       } catch (err) {
         console.warn('Webhook error:', err);
       }
@@ -284,25 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Mostra sucesso
-      drawerForm.style.display = 'none';
+      leadForm.style.display = 'none';
       success.classList.add('visible');
-
-      // REDIRECIONAMENTO WHATSAPP DESATIVADO TEMPORARIAMENTE
-      // const msgPersonalizada = encodeURIComponent(
-      //   `Olá! Meu nome é ${nome} e quero um orçamento de Telha Sanduíche.`
-      // );
-      // setTimeout(() => {
-      //   window.open(`https://wa.me/${WA_NUMBER}?text=${msgPersonalizada}`, '_blank');
-      //   closeDrawer();
-      // }, 1800);
-
-      // Fecha o drawer após 3 segundos sem redirecionar
-      setTimeout(() => {
-        closeDrawer();
-      }, 3000);
     });
   }
-
-  // Inicializa botões WhatsApp
-  bindWhatsAppButtons();
 });

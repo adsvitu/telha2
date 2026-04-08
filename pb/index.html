@@ -53,9 +53,9 @@
         <h1>Telha SanduÃ­che no <span>CearÃ¡</span> â€” FÃ¡brica com Entrega em João Pessoa e RegiÃ£o</h1>
         <p class="hero-sub">Qualidade Isopolar com entrega rÃ¡pida para todo o CearÃ¡. O melhor custo-benefÃ­cio do Nordeste.</p>
         <div class="hero-actions">
-          <button type="button" class="btn btn-primary btn-whatsapp-capture">
+          <a href="#orcamento" class="btn btn-primary">
             <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento
-          </button>
+          </a>
           <a href="#beneficios" class="btn btn-secondary">Saiba mais</a>
         </div>
       </div>
@@ -106,9 +106,9 @@
           <div class="gallery-item"><img src="/images/10.png" alt="10" loading="lazy"></div>
         </div>
         <div class="text-center mt-32">
-          <button type="button" class="btn-cta btn-whatsapp-capture">
+          <a href="#orcamento" class="btn-cta">
             <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento Agora
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -129,9 +129,9 @@
           <div class="category-card"><img src="/images/Telhas para LicitaÃ§Ã£o.png" alt="LicitaÃ§Ã£o" loading="lazy"><h3>Telha LicitaÃ§Ã£o</h3></div>
         </div>
         <div class="text-center mt-32">
-          <button type="button" class="btn-cta btn-whatsapp-capture">
+          <a href="#orcamento" class="btn-cta">
             <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -157,9 +157,9 @@
           <img src="/images/6d3a52_27c4651e26084afcbd5ca112c648ee26~mv2.png" alt="Gov 12" loading="lazy">
         </div>
         <div class="text-center mt-48">
-          <button type="button" class="btn-cta btn-whatsapp-capture">
+          <a href="#orcamento" class="btn-cta">
             <i class="fab fa-whatsapp"></i> Solicitar OrÃ§amento no CearÃ¡
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -179,9 +179,9 @@
               <div class="bullet-item">Baixa manutenÃ§Ã£o</div>
               <div class="bullet-item">Garantia de 10 anos na pintura</div>
             </div>
-            <button type="button" class="btn-cta btn-whatsapp-capture">
+            <a href="#orcamento" class="btn-cta">
               <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -191,11 +191,42 @@
       <div class="container">
         <h2>Transforme sua Obra no CearÃ¡</h2>
         <p>Fale agora com nosso time e receba o melhor orÃ§amento de Telha SanduÃ­che de João Pessoa ao interior.</p>
-        <button type="button" class="btn btn-primary btn-whatsapp-capture">
+        <a href="#orcamento" class="btn btn-primary">
           <i class="fab fa-whatsapp"></i> Falar Agora
-        </button>
+        </a>
       </div>
     </section>
+    <!-- FORMULÁRIO — CAPTADOR DE ORÇAMENTO -->
+    <section class="form-section" id="orcamento">
+      <div class="container">
+        <div class="form-wrapper">
+          <div class="form-icon"><i class="fab fa-whatsapp"></i></div>
+          <h2 class="form-title">Receba seu Orçamento Agora</h2>
+          <p class="form-subtitle">Preencha abaixo e entraremos em contato em <strong>até 15 minutos!</strong></p>
+          <form class="lead-form" id="leadForm" novalidate>
+            <div class="form-field-group">
+              <input type="text" id="formName" class="form-input" placeholder="Seu nome completo" autocomplete="name" maxlength="80">
+              <span class="form-error" id="formNameError">Por favor, informe seu nome.</span>
+            </div>
+            <div class="form-field-group">
+              <input type="tel" id="formPhone" class="form-input" placeholder="(XX) XXXXX-XXXX" autocomplete="tel" inputmode="numeric" maxlength="15">
+              <span class="form-error" id="formPhoneError">Informe um WhatsApp válido.</span>
+            </div>
+            <button type="submit" class="form-submit" id="formSubmit">
+              <span class="btn-text"><i class="fab fa-whatsapp"></i> Quero meu Orçamento</span>
+              <span class="spinner"></span>
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">✓</div>
+            <h3>NOSSO VENDEDOR VAI ENTRAR EM CONTATO</h3>
+            <p>AGUARDE!</p>
+          </div>
+          <p class="form-privacy">🔒 Seus dados estão seguros. Nenhum spam.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -210,48 +241,11 @@
     </div>
   </footer>
 
-  <button type="button" class="whatsapp-float" aria-label="WhatsApp">
+  <a href="#orcamento" class="whatsapp-float" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
-  </button>
-  <!-- ════════════════════════════════════
-       BOTTOM DRAWER — CAPTADOR WHATSAPP
-  ════════════════════════════════════ -->
-  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
-
-  <div class="lead-drawer" id="leadDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitleEl">
-    <div class="drawer-handle"></div>
-    <button class="drawer-close" id="drawerClose" aria-label="Fechar">✕</button>
-
-    <div class="drawer-icon"><i class="fab fa-whatsapp"></i></div>
-    <h2 class="drawer-title" id="drawerTitleEl">Receba seu Orçamento Agora</h2>
-    <p class="drawer-subtitle">Preencha abaixo e entraremos em contato em<br><strong>até 15 minutos!</strong></p>
-
-    <form class="drawer-form" id="drawerForm" novalidate>
-      <div class="drawer-input-group">
-        <label for="drawerName">Seu nome</label>
-        <input type="text" id="drawerName" class="drawer-input" placeholder="Ex: João Silva" autocomplete="name" maxlength="80">
-        <span class="drawer-error-msg" id="drawerNameError">Por favor, informe seu nome.</span>
-      </div>
-      <div class="drawer-input-group">
-        <label for="drawerPhone">WhatsApp</label>
-        <input type="tel" id="drawerPhone" class="drawer-input" placeholder="(XX) XXXXX-XXXX" autocomplete="tel" inputmode="numeric" maxlength="15">
-        <span class="drawer-error-msg" id="drawerPhoneError">Informe um WhatsApp válido.</span>
-      </div>
-      <button type="submit" class="drawer-submit" id="drawerSubmit">
-        <span class="btn-text"><i class="fab fa-whatsapp"></i> Quero meu Orçamento</span>
-        <span class="spinner"></span>
-      </button>
-    </form>
-
-    <div class="drawer-success" id="drawerSuccess">
-      <div class="drawer-success-icon">✓</div>
-      <h3>NOSSO VENDEDOR VAI ENTRAR EM CONTATO</h3><p>AGUARDE!</p>
-    </div>
-
-    <p class="drawer-privacy">🔒 Seus dados estão seguros. Nenhum spam.</p>
-  </div>
-
+  </a>
   <script src="/main.js"></script>
 </body>
 </html>
+
 
