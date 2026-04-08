@@ -978,7 +978,12 @@ footer .footer-links a:hover {
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 40px 32px;
-  box-shadow: 0 16px 64px rgba(0,0,0,0.3);
+  border: 2px solid #1d6dff;
+  box-shadow:
+    0 0 0 4px rgba(29, 109, 255, 0.15),
+    0 0 32px rgba(29, 109, 255, 0.45),
+    0 0 72px rgba(29, 109, 255, 0.20),
+    0 16px 64px rgba(0,0,0,0.3);
 }
 
 .form-icon {
@@ -1072,13 +1077,13 @@ footer .footer-links a:hover {
 
 .form-submit {
   width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, #25d366 0%, #16a34a 100%);
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: var(--white);
   border: none;
   border-radius: var(--radius);
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -1088,13 +1093,14 @@ footer .footer-links a:hover {
   justify-content: center;
   gap: 10px;
   transition: var(--transition);
-  box-shadow: 0 4px 20px rgba(22, 163, 74, 0.4);
-  margin-top: 4px;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.45);
+  margin-top: 8px;
 }
 
 .form-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(22, 163, 74, 0.5);
+  box-shadow: 0 8px 28px rgba(249, 115, 22, 0.55);
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
 }
 
 .form-submit:disabled {
