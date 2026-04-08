@@ -75,9 +75,9 @@
         <h1>Telha Sanduíche no Seu Estado — <span>Entregamos na Capital e Região</span></h1>
         <p class="hero-sub">A solução definitiva em isolamento térmico e acústico para sua obra. Qualidade Isopolar com entrega rápida.</p>
         <div class="hero-actions">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn btn-primary" target="_blank" rel="noopener">
+          <button type="button" class="btn btn-primary btn-whatsapp-capture" id="cta-hero">
             <i class="fab fa-whatsapp"></i> Pedir Orçamento
-          </a>
+          </button>
           <a href="#beneficios" class="btn btn-secondary">Saiba mais</a>
         </div>
       </div>
@@ -152,9 +152,9 @@
           <div class="gallery-item"><img src="/images/10.png" alt="Telha Sanduíche 10" loading="lazy"></div>
         </div>
         <div class="text-center mt-32">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture" id="cta-galeria-produtos">
             <i class="fab fa-whatsapp"></i> Pedir Orçamento Agora
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -183,9 +183,9 @@
           <div class="gallery-item"><img src="/images/6d3a52_35533af3bf5d481d8639a091a30a3cac~mv2.png" alt="Obra 10" loading="lazy"></div>
         </div>
         <div class="text-center mt-32">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture" id="cta-galeria-obras">
             <i class="fab fa-whatsapp"></i> Fale com um Especialista
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -250,9 +250,9 @@
           </div>
         </div>
         <div class="text-center">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture" id="cta-categorias">
             <i class="fab fa-whatsapp"></i> Pedir Orçamento Agora
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -281,9 +281,9 @@
           <img src="/images/6d3a52_27c4651e26084afcbd5ca112c648ee26~mv2.png" alt="Estado 12" loading="lazy">
         </div>
         <div class="text-center mt-48">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture" id="cta-presenca">
             <i class="fab fa-whatsapp"></i> Solicitar Orçamento
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -306,9 +306,9 @@
               <div class="bullet-item">Baixa manutenção</div>
               <div class="bullet-item">Garantia de 10 anos na pintura</div>
             </div>
-            <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn-cta" target="_blank" rel="noopener">
+            <button type="button" class="btn-cta btn-whatsapp-capture" id="cta-produto">
               <i class="fab fa-whatsapp"></i> Pedir Orçamento
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -321,9 +321,9 @@
       <div class="container">
         <h2>Pronto para Transformar sua Obra?</h2>
         <p>Fale agora com nosso time de especialistas e receba o melhor orçamento do mercado.</p>
-        <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche" class="btn btn-primary" style="font-size:1.1rem; padding:18px 44px;" target="_blank" rel="noopener">
+        <button type="button" class="btn btn-primary btn-whatsapp-capture" style="font-size:1.1rem; padding:18px 44px;" id="cta-band">
           <i class="fab fa-whatsapp"></i> Falar com Especialista
-        </a>
+        </button>
       </div>
     </section>
 
@@ -351,13 +351,65 @@
   </footer>
 
   <!-- Floating WhatsApp -->
-  <a href="https://api.whatsapp.com/send?phone=5584987711011&text=Olá!%20Quero%20um%20orçamento%20de%20Telha%20Sanduíche"
-     class="whatsapp-float"
-     target="_blank"
-     rel="noopener"
-     aria-label="Falar no WhatsApp">
+  <button type="button" class="whatsapp-float" aria-label="Falar no WhatsApp" id="cta-float">
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
+
+  <!-- ════════════════════════════════════
+       BOTTOM DRAWER — CAPTADOR WHATSAPP
+  ════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+  <div class="lead-drawer" id="leadDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitleEl">
+    <div class="drawer-handle"></div>
+    <button class="drawer-close" id="drawerClose" aria-label="Fechar">✕</button>
+
+    <div class="drawer-icon"><i class="fab fa-whatsapp"></i></div>
+    <h2 class="drawer-title" id="drawerTitleEl">Receba seu Orçamento Agora</h2>
+    <p class="drawer-subtitle">Preencha abaixo e entraremos em contato em<br><strong>até 15 minutos!</strong></p>
+
+    <form class="drawer-form" id="drawerForm" novalidate>
+      <div class="drawer-input-group">
+        <label for="drawerName">Seu nome</label>
+        <input
+          type="text"
+          id="drawerName"
+          class="drawer-input"
+          placeholder="Ex: João Silva"
+          autocomplete="name"
+          maxlength="80"
+        >
+        <span class="drawer-error-msg" id="drawerNameError">Por favor, informe seu nome.</span>
+      </div>
+
+      <div class="drawer-input-group">
+        <label for="drawerPhone">WhatsApp</label>
+        <input
+          type="tel"
+          id="drawerPhone"
+          class="drawer-input"
+          placeholder="(XX) XXXXX-XXXX"
+          autocomplete="tel"
+          inputmode="numeric"
+          maxlength="15"
+        >
+        <span class="drawer-error-msg" id="drawerPhoneError">Informe um WhatsApp válido.</span>
+      </div>
+
+      <button type="submit" class="drawer-submit" id="drawerSubmit">
+        <span class="btn-text"><i class="fab fa-whatsapp"></i> Quero meu Orçamento</span>
+        <span class="spinner"></span>
+      </button>
+    </form>
+
+    <div class="drawer-success" id="drawerSuccess">
+      <div class="drawer-success-icon">✓</div>
+      <h3>Recebemos seu contato!</h3>
+      <p>Redirecionando para o WhatsApp...</p>
+    </div>
+
+    <p class="drawer-privacy">🔒 Seus dados estão seguros. Nenhum spam.</p>
+  </div>
 
   <script src="/main.js"></script>
 </body>

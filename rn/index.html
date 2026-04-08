@@ -53,9 +53,9 @@
         <h1>Telha SanduÃ­che no <span>CearÃ¡</span> â€” FÃ¡brica com Entrega em Natal e RegiÃ£o</h1>
         <p class="hero-sub">Qualidade Isopolar com entrega rÃ¡pida para todo o CearÃ¡. O melhor custo-benefÃ­cio do Nordeste.</p>
         <div class="hero-actions">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="btn btn-primary" target="_blank" rel="noopener">
+          <button type="button" class="btn btn-primary btn-whatsapp-capture">
             <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento
-          </a>
+          </button>
           <a href="#beneficios" class="btn btn-secondary">Saiba mais</a>
         </div>
       </div>
@@ -106,9 +106,9 @@
           <div class="gallery-item"><img src="/images/10.png" alt="10" loading="lazy"></div>
         </div>
         <div class="text-center mt-32">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture">
             <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento Agora
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -129,9 +129,9 @@
           <div class="category-card"><img src="/images/Telhas para LicitaÃ§Ã£o.png" alt="LicitaÃ§Ã£o" loading="lazy"><h3>Telha LicitaÃ§Ã£o</h3></div>
         </div>
         <div class="text-center mt-32">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture">
             <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -157,9 +157,9 @@
           <img src="/images/6d3a52_27c4651e26084afcbd5ca112c648ee26~mv2.png" alt="Gov 12" loading="lazy">
         </div>
         <div class="text-center mt-48">
-          <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="btn-cta" target="_blank" rel="noopener">
+          <button type="button" class="btn-cta btn-whatsapp-capture">
             <i class="fab fa-whatsapp"></i> Solicitar OrÃ§amento no CearÃ¡
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -179,9 +179,9 @@
               <div class="bullet-item">Baixa manutenÃ§Ã£o</div>
               <div class="bullet-item">Garantia de 10 anos na pintura</div>
             </div>
-            <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="btn-cta" target="_blank" rel="noopener">
+            <button type="button" class="btn-cta btn-whatsapp-capture">
               <i class="fab fa-whatsapp"></i> Pedir OrÃ§amento
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -191,9 +191,9 @@
       <div class="container">
         <h2>Transforme sua Obra no CearÃ¡</h2>
         <p>Fale agora com nosso time e receba o melhor orÃ§amento de Telha SanduÃ­che de Natal ao interior.</p>
-        <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="btn btn-primary" style="font-size:1.1rem; padding:18px 44px;" target="_blank" rel="noopener">
+        <button type="button" class="btn btn-primary btn-whatsapp-capture">
           <i class="fab fa-whatsapp"></i> Falar Agora
-        </a>
+        </button>
       </div>
     </section>
   </main>
@@ -210,9 +210,47 @@
     </div>
   </footer>
 
-  <a href="https://api.whatsapp.com/send?phone=5584987711011&text=OlÃ¡!%20Quero%20um%20orÃ§amento%20de%20Telha%20SanduÃ­che%20no%20CearÃ¡" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <button type="button" class="whatsapp-float" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
-  </a>
+  </button>
+  <!-- ════════════════════════════════════
+       BOTTOM DRAWER — CAPTADOR WHATSAPP
+  ════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+  <div class="lead-drawer" id="leadDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitleEl">
+    <div class="drawer-handle"></div>
+    <button class="drawer-close" id="drawerClose" aria-label="Fechar">✕</button>
+
+    <div class="drawer-icon"><i class="fab fa-whatsapp"></i></div>
+    <h2 class="drawer-title" id="drawerTitleEl">Receba seu Orçamento Agora</h2>
+    <p class="drawer-subtitle">Preencha abaixo e entraremos em contato em<br><strong>até 15 minutos!</strong></p>
+
+    <form class="drawer-form" id="drawerForm" novalidate>
+      <div class="drawer-input-group">
+        <label for="drawerName">Seu nome</label>
+        <input type="text" id="drawerName" class="drawer-input" placeholder="Ex: João Silva" autocomplete="name" maxlength="80">
+        <span class="drawer-error-msg" id="drawerNameError">Por favor, informe seu nome.</span>
+      </div>
+      <div class="drawer-input-group">
+        <label for="drawerPhone">WhatsApp</label>
+        <input type="tel" id="drawerPhone" class="drawer-input" placeholder="(XX) XXXXX-XXXX" autocomplete="tel" inputmode="numeric" maxlength="15">
+        <span class="drawer-error-msg" id="drawerPhoneError">Informe um WhatsApp válido.</span>
+      </div>
+      <button type="submit" class="drawer-submit" id="drawerSubmit">
+        <span class="btn-text"><i class="fab fa-whatsapp"></i> Quero meu Orçamento</span>
+        <span class="spinner"></span>
+      </button>
+    </form>
+
+    <div class="drawer-success" id="drawerSuccess">
+      <div class="drawer-success-icon">✓</div>
+      <h3>Recebemos seu contato!</h3>
+      <p>Redirecionando para o WhatsApp...</p>
+    </div>
+
+    <p class="drawer-privacy">🔒 Seus dados estão seguros. Nenhum spam.</p>
+  </div>
 
   <script src="/main.js"></script>
 </body>
