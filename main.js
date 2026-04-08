@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Bottom Drawer — Captador WhatsApp ─────────────────────
 
-  const WEBHOOK_URL = 'https://evolution-n8n.kpyewn.easypanel.host/webhook-test/telha40';
+  const WEBHOOK_URL = 'https://evolution-n8n.kpyewn.easypanel.host/webhook/telha40';
   const WA_NUMBER  = '5584987711011';
   const WA_MSG     = encodeURIComponent('Olá! Quero um orçamento de Telha Sanduíche');
 
