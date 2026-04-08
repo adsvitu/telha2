@@ -175,6 +175,19 @@ document.addEventListener('DOMContentLoaded', () => {
       // Mostra sucesso
       leadForm.style.display = 'none';
       success.classList.add('visible');
+
+      // Monta mensagem personalizada
+      const msgPersonalizada = encodeURIComponent(
+        `Olá! Meu nome é ${nome} e quero um orçamento de Telha Sanduíche.`
+      );
+
+      // Clica no link oculto wa.me para o GTM detectar e disparar conversão Google Ads
+      // O trigger "Clique - Apenas links | {{Click URL}} contém wa.me" é acionado aqui
+      const waLink = document.getElementById('waGtmLink');
+      if (waLink) {
+        waLink.href = `https://wa.me/${WA_NUMBER}?text=${msgPersonalizada}`;
+        waLink.click();
+      }
     });
   }
 });
