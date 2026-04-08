@@ -247,13 +247,22 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
+        // mode: 'no-cors' evita CORS preflight — o n8n recebe mesmo sem resposta legível
         await fetch(WEBHOOK_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            nome,
+            telefone: phoneInput.value,
+            telefone_raw: telefone,
+            pagina: window.location.href,
+            ...utms,
+            timestamp: new Date().toISOString(),
+          }).toString(),
         });
+        console.log('Webhook enviado com sucesso');
       } catch (err) {
-        // Mesmo se o webhook falhar, redireciona para o WhatsApp
         console.warn('Webhook error:', err);
       }
 
@@ -268,18 +277,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // Mostra sucesso brevemente e redireciona ao WhatsApp
+      // Mostra sucesso
       drawerForm.style.display = 'none';
       success.classList.add('visible');
 
-      const msgPersonalizada = encodeURIComponent(
-        `Olá! Meu nome é ${nome} e quero um orçamento de Telha Sanduíche.`
-      );
+      // REDIRECIONAMENTO WHATSAPP DESATIVADO TEMPORARIAMENTE
+      // const msgPersonalizada = encodeURIComponent(
+      //   `Olá! Meu nome é ${nome} e quero um orçamento de Telha Sanduíche.`
+      // );
+      // setTimeout(() => {
+      //   window.open(`https://wa.me/${WA_NUMBER}?text=${msgPersonalizada}`, '_blank');
+      //   closeDrawer();
+      // }, 1800);
 
+      // Fecha o drawer após 3 segundos sem redirecionar
       setTimeout(() => {
-        window.open(`https://wa.me/${WA_NUMBER}?text=${msgPersonalizada}`, '_blank');
         closeDrawer();
-      }, 1800);
+      }, 3000);
     });
   }
 
