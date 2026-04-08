@@ -99,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!overlay || !drawer) return;
     // Reseta estado anterior
     resetDrawer();
+    // Salva posicao do scroll para restaurar ao fechar (iOS/Android fix)
+    const scrollY = window.scrollY || window.pageYOffset;
+    document.body.dataset.scrollY = scrollY;
     overlay.classList.add('active');
     drawer.classList.add('active');
     document.body.classList.add('drawer-open');
@@ -117,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.remove('active');
     drawer.classList.remove('active');
     document.body.classList.remove('drawer-open');
+    // Restaura posicao do scroll
+    const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+    window.scrollTo(0, scrollY);
   }
 
   // Reseta campos e estados

@@ -50,8 +50,7 @@ body {
 /* Impede scroll do body quando drawer está aberto */
 body.drawer-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
+  /* SEM position:fixed aqui — quebraria position:fixed dos filhos */
 }
 
 img {
