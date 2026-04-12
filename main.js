@@ -93,12 +93,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // Normaliza número: remove código do país 55 se presente, retorna 10-11 dígitos
   function normalizePhone(value) {
     let digits = value.replace(/\D/g, '');
-    // Remove prefixo +55 ou 55 quando resultar em 12 ou 13 dígitos
+    
+    // 1. Caso óbvio: colou ou preencheu 12-13 dígitos (Ex: 5584988...)
     if ((digits.length === 12 || digits.length === 13) && digits.startsWith('55')) {
-      digits = digits.slice(2);
+      return digits.slice(2);
     }
+
+    // 2. Desambiguação preditiva (para digitação manual):
+    // Se começa com 55 e o 3º dígito não é um início válido de número no RS (2,3,4,5 ou 9)
+    // então o 55 é obrigatoriamente o código do país (DDI).
+    if (digits.length >= 3 && digits.startsWith('55')) {
+      const thirdDigit = digits.charAt(2);
+      const validRSPrefixes = ['2', '3', '4', '5', '9'];
+      if (!validRSPrefixes.includes(thirdDigit)) {
+        return digits.slice(2); // Remove o 55 DDI imediatamente
+      }
+    }
+
     return digits; // 10 ou 11 dígitos
   }
+
+  // Mapeamento de DDDs para Estados
+  const DDD_MAP = {
+    11:"SP", 12:"SP", 13:"SP", 14:"SP", 15:"SP", 16:"SP", 17:"SP", 18:"SP", 19:"SP",
+    21:"RJ", 22:"RJ", 24:"RJ", 27:"ES", 28:"ES",
+    31:"MG", 32:"MG", 33:"MG", 34:"MG", 35:"MG", 37:"MG", 38:"MG",
+    41:"PR", 42:"PR", 43:"PR", 44:"PR", 45:"PR", 46:"PR",
+    47:"SC", 48:"SC", 49:"SC",
+    51:"RS", 53:"RS", 54:"RS", 55:"RS",
+    61:"DF", 62:"GO", 64:"GO", 63:"TO", 65:"MT", 66:"MT", 67:"MS", 68:"AC", 69:"RO",
+    71:"BA", 73:"BA", 74:"BA", 75:"BA", 77:"BA", 79:"SE",
+    81:"PE", 87:"PE", 82:"AL", 83:"PB", 84:"RN", 85:"CE", 88:"CE", 86:"PI", 89:"PI",
+    91:"PA", 93:"PA", 94:"PA", 92:"AM", 97:"AM", 95:"RR", 96:"AP", 98:"MA", 99:"MA"
+  };
 
   // Máscara + hint de normalização no campo telefone
   const phoneField = document.getElementById('formPhone');
@@ -106,18 +133,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (phoneField) {
     phoneField.addEventListener('input', (e) => {
-      const raw        = e.target.value.replace(/\D/g, '');
-      const normalized = normalizePhone(e.target.value);
+      // Pega todos os dígitos digitados até agora (sem limite de 11)
+      const currentDigits = e.target.value.replace(/\D/g, '');
+      
+      // Normaliza: se for 12-13 dígitos começando com 55, limpa o 55
+      const normalized = normalizePhone(currentDigits);
 
-      // Sempre aplica a máscara sobre o número normalizado
+      // Agora sim aplica a máscara no número normalizado (limite de 11 dígitos)
       e.target.value = maskPhone(normalized);
 
-      // Mostra hint apenas quando havia prefixo internacional (raw tinha 12-13 dígitos com 55)
+      // Hint de localização e normalização
       if (phoneHint) {
-        const hadPrefix = (raw.length === 12 || raw.length === 13) && raw.startsWith('55');
-        if (hadPrefix && normalized.length >= 10) {
-          phoneHint.textContent = '📱 Número identificado: ' + maskPhone(normalized);
-          phoneHint.classList.add('visible');
+        if (normalized.length >= 2) {
+          const ddd = parseInt(normalized.substring(0, 2));
+          const estado = DDD_MAP[ddd];
+          
+          // Detectamos DDI 55 se o que foi digitado originalmente tinha 12-13 dígitos
+          const hadDdiPrefix = (currentDigits.length === 12 || currentDigits.length === 13) && currentDigits.startsWith('55');
+
+          // Evita mostrar RS (DDD 55) prematuramente
+          let skipState = (ddd === 55 && normalized.length < 10);
+
+          if (estado && !skipState) {
+            let hintMsg = `📱 Identificado: ${maskPhone(normalized)} (${estado})`;
+            if (hadDdiPrefix) hintMsg = `🌍 Prefixo 55 removido | ${hintMsg}`;
+            
+            phoneHint.textContent = hintMsg;
+            phoneHint.classList.add('visible');
+          } else if (hadDdiPrefix) {
+            phoneHint.textContent = `🌍 Prefixo 55 removido | ${maskPhone(normalized)}`;
+            phoneHint.classList.add('visible');
+          } else {
+            phoneHint.classList.remove('visible');
+          }
         } else {
           phoneHint.classList.remove('visible');
         }
