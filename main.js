@@ -90,12 +90,38 @@ document.addEventListener('DOMContentLoaded', () => {
     return v.replace(/^(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
   }
 
-  // Máscara no campo telefone
+  // Normaliza número: remove código do país 55 se presente, retorna 10-11 dígitos
+  function normalizePhone(value) {
+    let digits = value.replace(/\D/g, '');
+    // Remove prefixo +55 ou 55 quando resultar em 12 ou 13 dígitos
+    if ((digits.length === 12 || digits.length === 13) && digits.startsWith('55')) {
+      digits = digits.slice(2);
+    }
+    return digits; // 10 ou 11 dígitos
+  }
+
+  // Máscara + hint de normalização no campo telefone
   const phoneField = document.getElementById('formPhone');
+  const phoneHint  = document.getElementById('formPhoneHint');
+
   if (phoneField) {
     phoneField.addEventListener('input', (e) => {
-      const raw = e.target.value.replace(/\D/g, '');
-      e.target.value = maskPhone(raw);
+      const raw        = e.target.value.replace(/\D/g, '');
+      const normalized = normalizePhone(e.target.value);
+
+      // Sempre aplica a máscara sobre o número normalizado
+      e.target.value = maskPhone(normalized);
+
+      // Mostra hint apenas quando havia prefixo internacional (raw tinha 12-13 dígitos com 55)
+      if (phoneHint) {
+        const hadPrefix = (raw.length === 12 || raw.length === 13) && raw.startsWith('55');
+        if (hadPrefix && normalized.length >= 10) {
+          phoneHint.textContent = '📱 Número identificado: ' + maskPhone(normalized);
+          phoneHint.classList.add('visible');
+        } else {
+          phoneHint.classList.remove('visible');
+        }
+      }
     });
   }
 
@@ -115,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Validação
       let valid = true;
       const nome     = nameInput.value.trim();
-      const telefone = phoneInput.value.replace(/\D/g, '');
+      const telefone = normalizePhone(phoneInput.value); // número limpo, sem país
 
       if (!nome) {
         nameInput.classList.add('error');
@@ -126,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nameErr.classList.remove('visible');
       }
 
-      if (telefone.length < 10) {
+      if (telefone.length < 10 || telefone.length > 11) {
         phoneInput.classList.add('error');
         phoneErr.classList.add('visible');
         valid = false;
@@ -150,8 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
             nome,
-            telefone: phoneInput.value,
-            telefone_raw: telefone,
+            telefone: maskPhone(telefone),   // formatado: (84) 98771-1011
+            telefone_raw: telefone,           // limpo: 84987711011
             pagina: window.location.href,
             ...utms,
             timestamp: new Date().toISOString(),

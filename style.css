@@ -1075,6 +1075,23 @@ footer .footer-links a:hover {
   display: block;
 }
 
+.form-phone-hint {
+  font-size: 0.75rem;
+  color: #16a34a;
+  font-weight: 600;
+  display: none;
+  animation: hintSlide 0.25s ease;
+}
+
+.form-phone-hint.visible {
+  display: block;
+}
+
+@keyframes hintSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .form-submit {
   width: 100%;
   padding: 20px 24px;
