@@ -115,16 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mapeamento de DDDs para Estados
   const DDD_MAP = {
-    11:"SP", 12:"SP", 13:"SP", 14:"SP", 15:"SP", 16:"SP", 17:"SP", 18:"SP", 19:"SP",
-    21:"RJ", 22:"RJ", 24:"RJ", 27:"ES", 28:"ES",
-    31:"MG", 32:"MG", 33:"MG", 34:"MG", 35:"MG", 37:"MG", 38:"MG",
-    41:"PR", 42:"PR", 43:"PR", 44:"PR", 45:"PR", 46:"PR",
-    47:"SC", 48:"SC", 49:"SC",
-    51:"RS", 53:"RS", 54:"RS", 55:"RS",
-    61:"DF", 62:"GO", 64:"GO", 63:"TO", 65:"MT", 66:"MT", 67:"MS", 68:"AC", 69:"RO",
-    71:"BA", 73:"BA", 74:"BA", 75:"BA", 77:"BA", 79:"SE",
-    81:"PE", 87:"PE", 82:"AL", 83:"PB", 84:"RN", 85:"CE", 88:"CE", 86:"PI", 89:"PI",
-    91:"PA", 93:"PA", 94:"PA", 92:"AM", 97:"AM", 95:"RR", 96:"AP", 98:"MA", 99:"MA"
+    11:"São Paulo", 12:"São Paulo", 13:"São Paulo", 14:"São Paulo", 15:"São Paulo", 16:"São Paulo", 17:"São Paulo", 18:"São Paulo", 19:"São Paulo",
+    21:"Rio de Janeiro", 22:"Rio de Janeiro", 24:"Rio de Janeiro",
+    27:"Espírito Santo", 28:"Espírito Santo",
+    31:"Minas Gerais", 32:"Minas Gerais", 33:"Minas Gerais", 34:"Minas Gerais", 35:"Minas Gerais", 37:"Minas Gerais", 38:"Minas Gerais",
+    41:"Paraná", 42:"Paraná", 43:"Paraná", 44:"Paraná", 45:"Paraná", 46:"Paraná",
+    47:"Santa Catarina", 48:"Santa Catarina", 49:"Santa Catarina",
+    51:"Rio Grande do Sul", 53:"Rio Grande do Sul", 54:"Rio Grande do Sul", 55:"Rio Grande do Sul",
+    61:"Distrito Federal", 62:"Goiás", 64:"Goiás", 63:"Tocantins", 65:"Mato Grosso", 66:"Mato Grosso", 67:"Mato Grosso do Sul", 68:"Acre", 69:"Rondônia",
+    71:"Bahia", 73:"Bahia", 74:"Bahia", 75:"Bahia", 77:"Bahia", 79:"Sergipe",
+    81:"Pernambuco", 87:"Pernambuco", 82:"Alagoas", 83:"Paraíba", 84:"Rio Grande do Norte", 85:"Ceará", 88:"Ceará", 86:"Piauí", 89:"Piauí",
+    91:"Pará", 93:"Pará", 94:"Pará", 92:"Amazonas", 97:"Amazonas", 95:"Roraima", 96:"Amapá", 98:"Maranhão", 99:"Maranhão"
   };
 
   // Máscara + hint de normalização no campo telefone
