@@ -58,6 +58,10 @@ Este plano adapta as recomendações de SEO (baseadas no checklist Wix) para a a
 - **Ação:** Título, Descrição e rastreamento.
 - **Status:** Feito.
 
+### 11. Conversão Direta via WhatsApp (Lead Capture) [x] [🟢 Baixa/IA]
+- **Ação:** Substituir formulários por links diretos para aumentar conversão.
+- **Status:** Feito.
+
 ---
 
 ## 🛠️ Próximos Passos Sugeridos

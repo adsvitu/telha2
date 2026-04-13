@@ -64,7 +64,7 @@ const replacements = [
   { from: /âœ✓/g, to: '&#10003;' }
 ];
 
-const baseDir = 'C:/Users/VICTOR/OneDrive/Área de Trabalho/IAS/clients/telha2';
+const baseDir = 'C:/Users/VICTOR/IAS/clients/telha2';
 
 files.forEach(file => {
   const fullPath = path.join(baseDir, file);
