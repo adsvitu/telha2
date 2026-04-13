@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tmp/
+Disallow: /admin/
+
+Sitemap: https://telhapolar40.com.br/sitemap.xml
