@@ -1660,6 +1660,23 @@ footer .footer-links a:hover {
   box-shadow: var(--shadow-lg);
 }
 
+.blog-video-container {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto 48px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 9/16;
+}
+
+.blog-video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
 .blog-content p {
   font-size: 1.1rem;
   line-height: 1.8;
