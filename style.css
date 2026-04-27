@@ -1613,3 +1613,109 @@ footer .footer-links a:hover {
     right: 18px;
   }
 }
+
+/* ============================================================
+   BLOG / SEO ARTICLES
+   ============================================================ */
+
+.blog-hero {
+  padding: 80px 0 40px;
+  background: var(--bg-light);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--primary);
+  margin-bottom: 24px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.blog-content {
+  padding: 64px 0;
+  background: var(--white);
+}
+
+.blog-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-featured-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  margin-bottom: 48px;
+  box-shadow: var(--shadow-lg);
+}
+
+.blog-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.blog-lead {
+  font-size: 1.25rem !important;
+  font-weight: 600;
+  color: var(--primary) !important;
+  line-height: 1.7 !important;
+  border-left: 4px solid var(--cta);
+  padding-left: 20px;
+  margin-bottom: 40px !important;
+}
+
+.blog-content h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--primary);
+  margin: 48px 0 24px;
+  font-weight: 700;
+}
+
+.blog-cta-inline {
+  background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+  border: 2px dashed var(--cta);
+  border-radius: var(--radius);
+  padding: 40px;
+  text-align: center;
+  margin: 48px 0;
+}
+
+.blog-cta-inline h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.blog-cta-inline p {
+  font-size: 1rem !important;
+  margin-bottom: 24px !important;
+}
+
+.blog-separator {
+  margin: 64px 0;
+  border: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+@media (max-width: 768px) {
+  .blog-hero { padding: 56px 0 32px; }
+  .blog-content { padding: 40px 0; }
+  .blog-meta { flex-direction: column; gap: 8px; }
+  .blog-cta-inline { padding: 24px; }
+}
