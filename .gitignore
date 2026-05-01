@@ -1,0 +1,6 @@
+node_modules/
+*.js
+!add_img_dims.js
+!main.js
+.DS_Store
+Thumbs.db
