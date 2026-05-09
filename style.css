@@ -2045,3 +2045,28 @@ footer .footer-links a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Meta Ads CTA Pulsante ───────────────────────── */
+.btn-pulse-green {
+  background-color: var(--cta) !important;
+  color: var(--white) !important;
+  border-color: var(--cta) !important;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+  animation: pulse-green 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.btn-pulse-green:hover,
+.btn-pulse-green:focus,
+.btn-pulse-green:active {
+  transform: translateY(-3px) scale(1.02);
+  background-color: var(--cta-hover) !important;
+  border-color: var(--cta-hover) !important;
+  color: var(--white) !important;
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
